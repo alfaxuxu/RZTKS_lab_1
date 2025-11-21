@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class EmployeeAddForm extends Container {
     private JPanel EmployeeAddPanel;
@@ -18,6 +20,16 @@ public class EmployeeAddForm extends Container {
     private JRadioButton FemaleRadioButton;
     private JRadioButton OtherRadioButton;
     private JButton AddButton;
+
+    public EmployeeAddForm() {
+        AddButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String message = "Message test";
+                JOptionPane.showMessageDialog(new JFrame(), message, "Windows title", JOptionPane.ERROR_MESSAGE);
+            }
+        });
+    }
 
     JPanel GetEmployeeAddPanel() {
         return EmployeeAddPanel;
@@ -50,7 +62,7 @@ public class EmployeeAddForm extends Container {
         AgeLabel.setText("Age:");
         EmployeeAddPanel.add(AgeLabel, new com.intellij.uiDesigner.core.GridConstraints(2, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         PhoneLabel = new JLabel();
-        PhoneLabel.setText("Phone");
+        PhoneLabel.setText("Phone:");
         EmployeeAddPanel.add(PhoneLabel, new com.intellij.uiDesigner.core.GridConstraints(3, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         PositionLabel = new JLabel();
         PositionLabel.setText("Position:");
@@ -91,4 +103,5 @@ public class EmployeeAddForm extends Container {
     public JComponent $$$getRootComponent$$$() {
         return EmployeeAddPanel;
     }
+
 }
