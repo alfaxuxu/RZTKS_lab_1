@@ -26,7 +26,6 @@ public class EmployeeAddForm extends Container {
     private ButtonGroup GenderGroup;
     private Controller controller;
 
-
     public EmployeeAddForm() {
         $$$setupUI$$$();
         AddButton.addActionListener(new ActionListener() {
@@ -82,6 +81,10 @@ public class EmployeeAddForm extends Container {
         });
     }
 
+    public void setController(Controller controller) {
+        this.controller = controller;
+    }
+
     JPanel GetEmployeeAddPanel() {
         return EmployeeAddPanel;
     }
@@ -97,43 +100,31 @@ public class EmployeeAddForm extends Container {
         createUIComponents();
         EmployeeAddPanel = new JPanel();
         EmployeeAddPanel.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(10, 2, new Insets(0, 0, 0, 0), -1, -1));
-
         NameLabel = new JLabel();
         NameLabel.setText("Name:");
         EmployeeAddPanel.add(NameLabel, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-
         DepLabel = new JLabel();
         DepLabel.setText("Department:");
         EmployeeAddPanel.add(DepLabel, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-
         AgeLabel = new JLabel();
         AgeLabel.setText("Age:");
         EmployeeAddPanel.add(AgeLabel, new com.intellij.uiDesigner.core.GridConstraints(2, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-
         PhoneLabel = new JLabel();
         PhoneLabel.setText("Phone:");
         EmployeeAddPanel.add(PhoneLabel, new com.intellij.uiDesigner.core.GridConstraints(3, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-
         PositionLabel = new JLabel();
         PositionLabel.setText("Position:");
         EmployeeAddPanel.add(PositionLabel, new com.intellij.uiDesigner.core.GridConstraints(4, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-
         GenderLabel = new JLabel();
         GenderLabel.setText("Gender:");
         EmployeeAddPanel.add(GenderLabel, new com.intellij.uiDesigner.core.GridConstraints(5, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-
         NameTextField = new JTextField();
         EmployeeAddPanel.add(NameTextField, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
-
         DepTextField = new JTextField();
         EmployeeAddPanel.add(DepTextField, new com.intellij.uiDesigner.core.GridConstraints(1, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
-
         AgeTextField = new JTextField();
         EmployeeAddPanel.add(AgeTextField, new com.intellij.uiDesigner.core.GridConstraints(2, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
-
-        //PhoneTextField - custom
         EmployeeAddPanel.add(PhoneTextField, new com.intellij.uiDesigner.core.GridConstraints(3, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
-
         PositionComboBox = new JComboBox();
         final DefaultComboBoxModel defaultComboBoxModel1 = new DefaultComboBoxModel();
         defaultComboBoxModel1.addElement("Trainee");
@@ -145,31 +136,26 @@ public class EmployeeAddForm extends Container {
         defaultComboBoxModel1.addElement("PM");
         PositionComboBox.setModel(defaultComboBoxModel1);
         EmployeeAddPanel.add(PositionComboBox, new com.intellij.uiDesigner.core.GridConstraints(4, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-
         MaleRadioButton = new JRadioButton();
         MaleRadioButton.setSelected(true);
         MaleRadioButton.setText("Male");
         EmployeeAddPanel.add(MaleRadioButton, new com.intellij.uiDesigner.core.GridConstraints(5, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-
         FemaleRadioButton = new JRadioButton();
         FemaleRadioButton.setText("Female");
         EmployeeAddPanel.add(FemaleRadioButton, new com.intellij.uiDesigner.core.GridConstraints(6, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-
         OtherRadioButton = new JRadioButton();
         OtherRadioButton.setText("Other");
         EmployeeAddPanel.add(OtherRadioButton, new com.intellij.uiDesigner.core.GridConstraints(7, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-
         AddButton = new JButton();
         AddButton.setText("Add");
         EmployeeAddPanel.add(AddButton, new com.intellij.uiDesigner.core.GridConstraints(9, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-
         final com.intellij.uiDesigner.core.Spacer spacer1 = new com.intellij.uiDesigner.core.Spacer();
         EmployeeAddPanel.add(spacer1, new com.intellij.uiDesigner.core.GridConstraints(8, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, 1, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
-
-        GenderGroup = new ButtonGroup();
-        GenderGroup.add(MaleRadioButton);
-        GenderGroup.add(FemaleRadioButton);
-        GenderGroup.add(OtherRadioButton);
+        ButtonGroup buttonGroup;
+        buttonGroup = new ButtonGroup();
+        buttonGroup.add(MaleRadioButton);
+        buttonGroup.add(FemaleRadioButton);
+        buttonGroup.add(OtherRadioButton);
     }
 
     /**
@@ -181,6 +167,26 @@ public class EmployeeAddForm extends Container {
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
+        // Инициализация радиокнопок с ActionCommand
+        MaleRadioButton = new JRadioButton();
+        MaleRadioButton.setSelected(true);
+        MaleRadioButton.setText("Male");
+        MaleRadioButton.setActionCommand("Male");
+
+        FemaleRadioButton = new JRadioButton();
+        FemaleRadioButton.setText("Female");
+        FemaleRadioButton.setActionCommand("Female");
+
+        OtherRadioButton = new JRadioButton();
+        OtherRadioButton.setText("Other");
+        OtherRadioButton.setActionCommand("Other");
+
+        // Инициализация ButtonGroup и добавление кнопок
+        GenderGroup = new ButtonGroup();
+        GenderGroup.add(MaleRadioButton);
+        GenderGroup.add(FemaleRadioButton);
+        GenderGroup.add(OtherRadioButton);
+
         NumberFormat nf = NumberFormat.getNumberInstance();
         nf.setMaximumFractionDigits(0);
         nf.setMaximumIntegerDigits(10);
